@@ -1,0 +1,20 @@
+.DS_Store
+Thumbs.db
+node_modules/
+/dist/
+/test/unit/coverage/
+db.json
+*.log
+public/
+.deploy*/
+src/_drafts
+package-lock.json
+
+# Editor directories and files
+.idea
+.history
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
