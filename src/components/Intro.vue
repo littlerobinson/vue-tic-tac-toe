@@ -53,6 +53,13 @@ export default {
       player2: ''
     }
   },
+  created: function () {
+    // Reset State values in store when game is created
+    this.$store.commit('setPlayer1', '')
+    this.$store.commit('setPlayer2', '')
+    this.$store.commit('setGameMode', '')
+    this.$store.commit('setCanAccessToGame', false)
+  },
   computed: {
     /**
      * Get a flag if player as choose a game mode
@@ -69,18 +76,23 @@ export default {
      * Check the validity of the forms
      * Check that player are completed the fields with nickname
      */
-    checkTypeGameForm () {
+    checkTypeGameForm (e) {
+      e.preventDefault()
       switch (this.gameMode) {
         case 'vs':
-          this.isPlayersCreated = this.player1.length > 0 && this.player2.length > 0
-          if (this.isPlayersCreated === false) {
-            this.$notify({ type: 'warn', text: 'Champ manquants vs.' })
+          this.isPlayersCreated = this.player1.length > 0 && this.player2.length > 0 && this.player1 !== this.player2
+          // Check if name are the same
+          if (this.player1 === this.player2) {
+            this.$notify({ type: 'warn', text: 'Les noms ne doivent pas être identiques' })
+          }
+          if (this.player1.length < 1 || this.player2.length < 1) {
+            this.$notify({ type: 'warn', text: 'Champ manquants.' })
           }
           break
         case 'ai':
           this.isPlayersCreated = this.player1.length > 0
           if (this.isPlayersCreated === false) {
-            this.$notify({ type: 'warn', text: 'Champ manquants ai.' })
+            this.$notify({ type: 'warn', text: 'Champ manquants.' })
           }
           break
         default:
@@ -88,7 +100,12 @@ export default {
           break
       }
       if (this.isPlayersCreated) {
-        this.$router.push('game')
+        // Save infos to the store
+        this.$store.commit('setPlayer1', this.player1)
+        this.$store.commit('setPlayer2', this.player2)
+        this.$store.commit('setGameMode', this.gameMode)
+        this.$store.commit('setCanAccessToGame', this.isPlayersCreated)
+        this.$router.push({name: 'game'})
       }
     }
   }
