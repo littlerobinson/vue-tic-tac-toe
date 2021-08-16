@@ -22,7 +22,6 @@
 <script>
 
 export default {
-  name: 'summary',
   props: {
     playerName: String
   },

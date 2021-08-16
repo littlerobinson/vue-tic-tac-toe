@@ -12,7 +12,6 @@
 <script>
 
 export default {
-  name: 'countdown',
   data () {
     return {
       displaySeconds: '00',

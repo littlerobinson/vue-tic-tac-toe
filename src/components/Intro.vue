@@ -40,7 +40,6 @@
 <script>
 
 export default {
-  name: 'intro',
   data () {
     return {
       // List of errors for this component
@@ -55,10 +54,10 @@ export default {
   },
   created: function () {
     // Reset State values in store when game is created
-    this.$store.commit('setPlayer1', '')
-    this.$store.commit('setPlayer2', '')
-    this.$store.commit('setGameMode', '')
-    this.$store.commit('setCanAccessToGame', false)
+    this.$store.dispatch('setPlayer1', '')
+    this.$store.dispatch('setPlayer2', '')
+    this.$store.dispatch('setGameMode', '')
+    this.$store.dispatch('setCanAccessToGame', false)
   },
   computed: {
     /**
@@ -76,8 +75,8 @@ export default {
      * Check the validity of the forms
      * Check that player are completed the fields with nickname
      */
-    checkTypeGameForm (e) {
-      e.preventDefault()
+    checkTypeGameForm (event) {
+      // event.preventDefault()
       switch (this.gameMode) {
         case 'vs':
           this.isPlayersCreated = this.player1.length > 0 && this.player2.length > 0 && this.player1 !== this.player2
@@ -101,10 +100,10 @@ export default {
       }
       if (this.isPlayersCreated) {
         // Save infos to the store
-        this.$store.commit('setPlayer1', this.player1)
-        this.$store.commit('setPlayer2', this.player2)
-        this.$store.commit('setGameMode', this.gameMode)
-        this.$store.commit('setCanAccessToGame', this.isPlayersCreated)
+        this.$store.dispatch('setPlayer1', this.player1)
+        this.$store.dispatch('setPlayer2', this.player2)
+        this.$store.dispatch('setGameMode', this.gameMode)
+        this.$store.dispatch('setCanAccessToGame', this.isPlayersCreated)
         this.$router.push({name: 'game'})
       }
     }

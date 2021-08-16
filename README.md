@@ -1,41 +1,100 @@
-# tic_tac_toe
+# Tic Tac Toe
 
-> A great tic tac toe game in vuejs
+Tic tac toe le jeu écrit en vuejs.
 
-asdf plugin add node
+## 📝 Table des matières
 
-## Build Setup
+- [**Pré-requis**](#pre-requis)
+- [**Installations**](#installation)
+- [**Commandes**](#commandes)
+- [**Liens utiles**](#links)
 
-```bash
-# install dependencies
-npm install
+---
 
-# serve with hot reload at localhost:8080
-npm run dev
+<a name="pre-requis"></a>
 
-# build for production with minification
-npm run build
+## ⚙️ Pré-requis (WIP 🚧)
 
-# build for production and view the bundle analyzer report
-npm run build --report
+- [**yarn**](https://yarnpkg.com/)
+- [**asdf**](https://github.com/asdf-vm/asdf)
+- [**Make**](https://www.gnu.org/software/make/)
+- [**lcov**](https://github.com/linux-test-project/lcov)
 
-# run unit tests
-npm run unit
+<a name="installation"></a>
 
-# run all tests
-npm test
+## 💚 Installation
+
+Nous utilisons `asdf` pour installer les différentes dépendances nécessaires à l'installation du projet.
+Les versions des librairies utilisées sont indiquées dans le fichier `.tools-version` à la racine du projet :
+
+```text
+node v16.6.2
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- Télécharger le projet
 
-TODO :
+```bash
+git clone https://github.com/littlerobinson/vue_tic_tac_toe.git
+```
 
-mise en place du router OK
-Crée le depot git et push la 1er version OK
-mise ne place de vuex
-algo jeu
-countdown
-fin de partie
-ajouter le test café
-création d'un Makefile
-Ecriture de la doc
+- Se déplacer dans le projet
+
+```bash
+cd vue_tic_tac_toe
+```
+
+- Installer le projet
+
+```bash
+make install
+```
+
+- Lancer le projet
+
+```bash
+make install
+```
+
+<a name="commandes"></a>
+
+## ⌨️ Commandes
+
+Pour visualiser l'ensemble des commandes disponibles du `Makefile`.
+
+```bash
+make help
+```
+
+### Pour construire le projet
+
+```bash
+make build
+```
+
+### Pour lancer l'application
+
+```bash
+make run-dev
+```
+
+### ✅ Tests unitaires
+
+Lancer les tests unitaires avec le rapport de couverture de code.
+
+```bash
+make test-unit
+```
+
+### 🧪 Tests d'intégration
+
+🚧 En construction, mise en place de test cafe
+
+```bash
+make test-integration
+```
+
+### Analyse du code / Visualiser les éventuels problèmes de code
+
+```bash
+make lint-inspect
+```
